@@ -1,0 +1,24 @@
+body {
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calc-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sum {
+    width: 100px;
+}
+
+.result {
+    margin-top: 30px;
+    font-size: 35px;
+    visibility: hidden;
+}

@@ -1,0 +1,9 @@
+options:
+	killTokenName: &cKill Token
+	
+on death:
+	attacker is a player
+	victim is a player
+	
+	give attacker red dye named "{@killTokenName}"
+	send "&aYou received a &6Kill Token &afor killing %victim%!" to attacker

@@ -1,0 +1,8 @@
+
+command /announce [<text>]:
+    permission: op
+    trigger:
+        set {_text} to colored arg-1
+        send title "&6&lANNOUNCEMENT!" with subtitle {_text} for 5 seconds
+        send "&6&lANNOUNCEMENT! &f%{_text}%"
+            

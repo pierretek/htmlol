@@ -1,0 +1,12 @@
+options:
+	discordLink: https://discord.gg/DISCORD_LINK_HERE
+	discordMessage: &a→ &b[ᴄʟɪᴄᴋ ᴛᴏ ᴊᴏɪɴ ᴏᴜʀ ᴅɪꜱᴄᴏʀᴅ!] &a←
+	broadcastInterval: 15 minutes
+
+command /discord:
+	trigger:
+		send "<link:{@discordLink}>{@discordMessage}<reset>" to player
+		
+# Send Discord every so often
+every {@broadcastInterval}:
+	broadcast "<link:{@discordLink}>{@discordMessage}<reset>"

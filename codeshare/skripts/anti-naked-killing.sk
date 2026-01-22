@@ -1,0 +1,32 @@
+options:
+	combat-duration: 5 seconds
+	
+on damage of player:
+	attacker is a player
+	attacker is not op
+			
+	if armor of attacker is air:
+		cancel event
+		send "&cYou need to wear armor to PvP!" to attacker
+		stop	
+		
+	if armor of victim is air:
+		cancel event
+		send "&cYou cannot attack naked players!" to attacker
+		stop
+		
+	# Put both players in combat
+	set {combat::%attacker's uuid%} to now
+	set {combat::%victim's uuid%} to now
+	
+on inventory click:
+	player is not op
+	{combat::%player's uuid%} is set
+	event-slot is 36 or 37 or 38 or 39
+	difference between {combat::%player's uuid%} and now < {@combat-duration}
+	
+	cancel event
+	send "&cYou cannot change your armor during a fight!" to player
+	
+on quit:
+	delete {combat::%player's uuid%}

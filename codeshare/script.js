@@ -18,19 +18,27 @@ async function copyContent(event) {
 	}
 }
 
-function downloadContent(event,name) {
-	const content = event.target.closest('details').querySelector('.code-snippet').innerText;
+async function downloadContent(event) {
+	const detailsElement = event.target.closest('details');
+	const scriptPath = detailsElement.getAttribute('data-script');
 	const button = event.target;
 
 	try {
-		// Create a blob with the content
+		// If there's a script path, fetch and download it directly
+		const response = await fetch(scriptPath);
+		const content = await response.text();
+
+		// Extract filename from the script path
+		const filename = scriptPath.split('/').pop();
+
+		// Create a blob with the fetched content
 		const blob = new Blob([content], { type: 'text/plain' });
 
 		// Create a temporary download link
 		const url = URL.createObjectURL(blob);
 		const a = document.createElement('a');
 		a.href = url;
-		a.download = name + '.sk';
+		a.download = filename;
 
 		// Trigger the download
 		document.body.appendChild(a);
@@ -51,3 +59,23 @@ function downloadContent(event,name) {
 		alert('Failed to download file');
 	}
 }
+
+
+// Load all script snippets on page load
+document.addEventListener('DOMContentLoaded', async () => {
+	const details = document.querySelectorAll('details[data-script]');
+
+	for (const detail of details) {
+		const scriptPath = detail.getAttribute('data-script');
+		const codeElement = detail.querySelector('.code-snippet code');
+
+		try {
+			const response = await fetch(scriptPath);
+			const content = await response.text();
+			codeElement.textContent = content;
+		} catch (error) {
+			codeElement.textContent = 'Error loading script file';
+			console.error('Failed to load:', scriptPath, error);
+		}
+	}
+});

@@ -1,0 +1,10 @@
+options:
+	afkTokenName: TOKEN_NAME_HERE
+	afkTokenCooldown: 60 seconds
+
+every {@afkTokenCooldown}:
+    loop all players:
+        if "%region at loop-player%" contains "afk":
+            send "&7GG! You Got a Reward for Being AFK!" to loop-player
+            play sound "entity.experience_orb.pickup" with volume 1 to loop-player
+            give sunflower named "{@afkTokenName}" to loop-player

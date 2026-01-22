@@ -1,0 +1,9 @@
+on right click:
+    name of player's tool is "RANK_NAME_HERE"
+    
+    execute console command "lp user %player% parent set RANK_NAME_HERE"
+    broadcast "&6%player% became a &d&lRANK_NAME_HERE!"
+    send title "&d&lRANK_NAME_HERE &aʀᴀɴᴋ ᴜɴʟᴏᴄᴋᴇᴅ!" to player
+    play sound "ui.toast.challenge_complete" with volume 1 and pitch 1 at player
+    remove 1 of item named "RANK_NAME_HERE" from player
+    cancel event

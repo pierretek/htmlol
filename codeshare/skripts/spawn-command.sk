@@ -1,0 +1,32 @@
+options:
+    teleporting-time: 5 seconds
+
+command /setspawnloc:
+    permission: op
+    permission message: &cYou do not have permission to use this command!
+    trigger:
+        set {respawn.join.location} to location of player
+        send "&aRespawn & Join location set to your current position!"
+
+on join:
+    if {respawn.join.location} is set:
+        teleport player to {respawn.join.location}
+
+on respawn:
+    if {respawn.join.location} is set:
+        teleport player to {respawn.join.location}
+
+        command /spawn:
+    trigger:
+        send "&6ᴛᴇʟᴇᴘᴏʀᴛɪɴɢ ᴛᴏ ꜱᴘᴀᴡɴ ɪɴ %{@teleporting-time}% (ᴅᴏɴᴛ ᴍᴏᴠᴇ)"
+        set {teleporting.%player%} to true
+        wait teleporting-time
+        if {teleporting.%player%} is true:
+            execute console command "/minecraft:tp %player% -136 109 298"
+            send "&aᴛᴇʟᴇᴘᴏʀᴛᴇᴅ ᴛᴏ ꜱᴘᴀᴡɴ!"
+        delete {teleporting.%player%}
+
+on player move:
+    if {teleporting.%player%} is true:
+        send "&c&oʏᴏᴜ ᴍᴏᴠᴇᴅ, ᴛᴇʟᴇᴘᴏʀᴛ ᴄᴀɴᴄᴇʟᴇᴅ"
+        delete {teleporting.%player%}

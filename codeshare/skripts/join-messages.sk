@@ -1,0 +1,14 @@
+
+options:
+    serverPrefix: [SERVER_NAME_HERE]
+
+on join:
+    
+    if player has played before:
+        set join message to "&a{@serverPrefix} &f%player% &ajoined the game!"
+    else:
+        set join message to "&b{@serverPrefix} &f%player% &ejoined for the first time! &7[#&e%size of all offline players%&7]"
+
+on quit:
+    set quit message to "&c{@serverPrefix} &f%player% &cleft the game!"
+                        

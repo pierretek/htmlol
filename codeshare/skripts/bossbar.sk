@@ -1,0 +1,47 @@
+on damage:
+    attacker is player
+    victim is not interaction
+    
+    set {_attacker} to attacker
+    set {_victim} to victim
+    
+    wait 1 tick
+    
+    set {_name} to name of {_victim}
+    set {_health} to health of {_victim}
+    set {_maxhealth} to max health of {_victim}
+    set {_percent} to ({_health} / {_maxhealth}) * 100
+    
+    set {_barID} to "pvp-%uuid of {_attacker}%"
+    delete boss bar named {_barID}
+    
+    set {_bar} to boss bar with id {_barID} with title "&c%{_name}%"
+    
+    # Set properties
+    set bar color of {_bar} to red
+    set bar style of {_bar} to solid_bar
+    set bar progress of {_bar} to {_percent}
+    
+    add {_attacker} to {_bar}
+    set {bossbar::%uuid of {_attacker}%} to uuid of {_victim}
+    set {bossbar.expiry::%uuid of {_attacker}%} to now
+    
+    if {bossbar.running::%uuid of {_attacker}%} is not set:
+        set {bossbar.running::%uuid of {_attacker}%} to true
+        while {bossbar.running::%uuid of {_attacker}%} is true:
+            wait 1 tick
+            # Check if 5 seconds have passed since last hit
+            if difference between {bossbar.expiry::%uuid of {_attacker}%} and now >= 5 seconds:
+                delete boss bar named {_barID}
+                delete {bossbar::%uuid of {_attacker}%}
+                delete {bossbar.expiry::%uuid of {_attacker}%}
+                delete {bossbar.running::%uuid of {_attacker}%}
+                stop loop
+
+# Clean up on player quit
+on quit:
+    set {_barID} to "pvp-%uuid of player%"
+    delete boss bar named {_barID}
+    delete {bossbar::%uuid of player%}
+    delete {bossbar.expiry::%uuid of player%}
+    delete {bossbar.running::%uuid of player%}

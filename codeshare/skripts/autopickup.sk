@@ -1,0 +1,20 @@
+on block break:
+    if {autopickup::%player's uuid%} is set:
+        cancel drops
+        set {_drops::*} to drops of event-block using player's tool
+        loop {_drops::*}:
+            give loop-item to player
+            if loop-item is not in player's inventory:
+                drop loop-item at location of event-block
+                send "&eYour inventory is full!" to player
+
+command /autopickup:
+    cooldown: 5 seconds
+    aliases: apu, ap
+    trigger:
+        if {autopickup::%player's uuid%} is set:
+            delete {autopickup::%player's uuid%}
+            send "&cDisabled Auto Pickup!"
+        else:
+            set {autopickup::%player's uuid%} to true
+            send "&aEnabled Auto Pickup!"

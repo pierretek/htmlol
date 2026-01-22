@@ -1,0 +1,10 @@
+options:
+    trash-name: &cTrash
+
+command /trash:
+    trigger:
+        open chest inventory with 6 rows named "{@trash-name}" to player
+
+on inventory close:
+    if name of event-inventory is "{@trash-name}":
+        send "&aTrash emptied!" to player

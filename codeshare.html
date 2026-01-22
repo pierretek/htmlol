@@ -3,115 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="sites/codeshare/hover.css">
-    <link rel="stylesheet" href="sites/codeshare/styles.css">
-    <script src="sites/codeshare/script.js"></script>
+    <link rel="stylesheet" href="codeshare/hover.css">
+    <link rel="stylesheet" href="codeshare/styles.css">
+    <script src="codeshare/script.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Caculator</title>
 </head>
 
 <body>
 
-    <div class="page">
-        <h1>Minecraft Server Skripts</h1>
-        <h3>Very useful skript snippets for any minecraft server!</h3>
+
+    <h1 class="subtitle">Minecraft Server Skripts</h1>
+    <h2>Very useful skript snippets for any minecraft server!</h3>
 
         <!-- Announce Command -->
-        <details class="hvr-float hvr-outline hvr-grow">
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/announce.sk">
             <summary>
                 Announce Command
                 <span class="icon">➤</span>
             </summary>
 
-            <button class="download-btn" onclick="downloadContent(event,'announce')">Download</button>
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
             <button class="copy-btn" onclick="copyContent(event)">Copy</button>
 
-            <pre class="code-snippet"><code>
-command /announce [&lt;text&gt;]:
-    permission: op
-    trigger:
-        set {_text} to colored arg-1
-        send title "&6&lANNOUNCEMENT!" with subtitle {_text} for 5 seconds
-        send "&6&lANNOUNCEMENT! &f%{_text}%"
-            </code></pre>
-
+            <pre class="code-snippet"><code>Loading...</code></pre>
         </details>
 
         <!-- Custom Join/Leave Messages -->
-        <details class="hvr-float hvr-outline hvr-grow">
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/join-messages.sk">
             <summary>
                 Custom Join/Leave Messages
                 <span class="icon">➤</span>
             </summary>
 
-            <button class="download-btn" onclick="downloadContent(event,'join-messages')">Download</button>
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
             <button class="copy-btn" onclick="copyContent(event)">Copy</button>
 
-            <pre class="code-snippet"><code>
-options:
-    serverPrefix: [SERVER_NAME_HERE]
-
-on join:
-    
-    if player has played before:
-        set join message to "&a{@serverPrefix} &f%player% &ajoined the game!"
-    else:
-        set join message to "&b{@serverPrefix} &f%player% &ejoined for the first time! &7[#&e%size of all offline players%&7]"
-
-on quit:
-    set quit message to "&c{@serverPrefix} &f%player% &cleft the game!"
-                        </code></pre>
-
+            <pre class="code-snippet"><code>Loading...</code></pre>
         </details>
 
         <!-- Anti Naked Killing -->
-        <details class="hvr-float hvr-outline hvr-grow">
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/anti-naked-killing.sk">
             <summary>
                 Anti-Naked Killing
                 <span class="icon">➤</span>
             </summary>
 
-            <button class="download-btn" onclick="downloadContent(event,'anti-naked-killing')">Download</button>
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
             <button class="copy-btn" onclick="copyContent(event)">Copy</button>
 
-            <pre class="code-snippet"><code>
-options:
-	combat-duration: 5 seconds
-	
-on damage of player:
-	attacker is a player
-	attacker is not op
-			
-	if armor of attacker is air:
-		cancel event
-		send "&cYou need to wear armor to PvP!" to attacker
-		stop	
-		
-	if armor of victim is air:
-		cancel event
-		send "&cYou cannot attack naked players!" to attacker
-		stop
-		
-	# Put both players in combat
-	set {combat::%attacker's uuid%} to now
-	set {combat::%victim's uuid%} to now
-	
-on inventory click:
-	player is not op
-	{combat::%player's uuid%} is set
-	event-slot is 36 or 37 or 38 or 39
-	difference between {combat::%player's uuid%} and now < {@combat-duration}
-	
-	cancel event
-	send "&cYou cannot change your armor during a fight!" to player
-	
-on quit:
-	delete {combat::%player's uuid%}
-        </code></pre>
+            <pre class="code-snippet"><code>Loading...</code></pre>
         </details>
 
         <!-- Right-Clickable Rank Papers -->
-        <details class="hvr-float hvr-outline hvr-grow">
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/ranks.sk">
             <summary>
                 Right-Clickable Rank Papers
                 <span class="icon">➤</span>
@@ -120,107 +65,121 @@ on quit:
             <button class="download-btn" onclick="downloadContent(event,'ranks')">Download</button>
             <button class="copy-btn" onclick="copyContent(event)">Copy</button>
 
-            <pre class="code-snippet"><code>
-on right click:
-    name of player's tool is "RANK_NAME_HERE"
-    
-    execute console command "lp user %player% parent set RANK_NAME_HERE"
-    broadcast "&6%player% became a &d&lRANK_NAME_HERE!"
-    send title "&d&lRANK_NAME_HERE &aʀᴀɴᴋ ᴜɴʟᴏᴄᴋᴇᴅ!" to player
-    play sound "ui.toast.challenge_complete" with volume 1 and pitch 1 at player
-    remove 1 of item named "RANK_NAME_HERE" from player
-    cancel event
-            </code></pre>
-
+            <pre class="code-snippet"><code>Loading...</code></pre>
         </details>
 
-        <!-- Spawn Command -->
-        <details class="hvr-float hvr-outline hvr-grow">
+        <!-- Kill Tokens -->
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/kill-tokens.sk">
             <summary>
-                Spawn Command
+                Kill Tokens
                 <span class="icon">➤</span>
             </summary>
 
-            <button class="download-btn" onclick="downloadContent(event,'spawn-command')">Download</button>
+            <button class="download-btn" onclick="downloadContent(event,'ranks')">Download</button>
             <button class="copy-btn" onclick="copyContent(event)">Copy</button>
 
-            <pre class="code-snippet"><code>
-options:
-    teleporting-time: 5 seconds
-
-command /spawn:
-    trigger:
-        send "&6ᴛᴇʟᴇᴘᴏʀᴛɪɴɢ ᴛᴏ ꜱᴘᴀᴡɴ ɪɴ %{@teleporting-time}% (ᴅᴏɴᴛ ᴍᴏᴠᴇ)"
-        set {teleporting.%player%} to true
-        wait teleporting-time
-        if {teleporting.%player%} is true:
-            execute console command "/minecraft:tp %player% -136 109 298"
-            send "&aᴛᴇʟᴇᴘᴏʀᴛᴇᴅ ᴛᴏ ꜱᴘᴀᴡɴ!"
-        delete {teleporting.%player%}
-
-on player move:
-    if {teleporting.%player%} is true:
-        send "&c&oʏᴏᴜ ᴍᴏᴠᴇᴅ, ᴛᴇʟᴇᴘᴏʀᴛ ᴄᴀɴᴄᴇʟᴇᴅ"
-        delete {teleporting.%player%}
-            </code></pre>
-
+            <pre class="code-snippet"><code>Loading...</code></pre>
         </details>
 
-        <!-- Set Spawn Location Command -->
-        <details class="hvr-float hvr-outline hvr-grow">
+        <!-- Pvp Health Bossbars -->
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/skripts/bossbar.sk">
             <summary>
-                Set Spawn Location Command
+                Pvp Health Bossbars
                 <span class="icon">➤</span>
             </summary>
 
-            <button class="download-btn" onclick="downloadContent(event,'spawn-location')">Download</button>
+            <button class="download-btn" onclick="downloadContent(event,'ranks')">Download</button>
             <button class="copy-btn" onclick="copyContent(event)">Copy</button>
 
-            <pre class="code-snippet"><code>
-command /setspawnloc:
-    permission: op
-    permission message: &cYou do not have permission to use this command!
-    trigger:
-        set {respawn.join.location} to location of player
-        send "&aRespawn & Join location set to your current position!"
-
-on join:
-    if {respawn.join.location} is set:
-        teleport player to {respawn.join.location}
-
-on respawn:
-    if {respawn.join.location} is set:
-        teleport player to {respawn.join.location}
-                            </code></pre>
-
+            <pre class="code-snippet"><code>Loading...</code></pre>
         </details>
 
         <!-- AFK Pool Tokens -->
-        <details class="hvr-float hvr-outline hvr-grow">
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/afk-tokens.sk">
             <summary>
                 AFK Pool Tokens
                 <span class="icon">➤</span>
             </summary>
 
-            <button class="download-btn" onclick="downloadContent(event,'afk-pool')">Download</button>
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
             <button class="copy-btn" onclick="copyContent(event)">Copy</button>
 
-            <pre class="code-snippet"><code>
-options:
-	afkTokenName: TOKEN_NAME_HERE
-	afkTokenCooldown: 60 seconds
-
-every {@afkTokenCooldown}:
-    loop all players:
-        if "%region at loop-player%" contains "afk":
-            send "&7GG! You Got a Reward for Being AFK!" to loop-player
-            play sound "entity.experience_orb.pickup" with volume 1 to loop-player
-            give sunflower named "{@afkTokenName}" to loop-player
-            </code></pre>
-
+            <pre class="code-snippet"><code>Loading...</code></pre>
         </details>
 
-    </div>
+        <!-- Anti Chat Spam -->
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/anti-chat-spam.sk">
+            <summary>
+                Anti Chat Spam
+                <span class="icon">➤</span>
+            </summary>
+
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
+            <button class="copy-btn" onclick="copyContent(event)">Copy</button>
+
+            <pre class="code-snippet"><code>Loading...</code></pre>
+        </details>
+
+
+
+
+        <h1 class="subtitle">Commands Section</h1>
+        <h3 class="subdetails">A variety of useful commands for players</h3>
+
+
+        <!-- Autopickup Command -->
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/autopickup.sk">
+            <summary>
+                Autopickup Command
+                <span class="icon">➤</span>
+            </summary>
+
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
+            <button class="copy-btn" onclick="copyContent(event)">Copy</button>
+
+            <pre class="code-snippet"><code>Loading...</code></pre>
+        </details>
+
+        <!-- Spawn Command -->
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/Skripts/spawn-command.sk">
+            <summary>
+                Spawn Command
+                <span class="icon">➤</span>
+            </summary>
+
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
+            <button class="copy-btn" onclick="copyContent(event)">Copy</button>
+
+            <pre class="code-snippet"><code>Loading...</code></pre>
+        </details>
+
+
+        <!-- Discord Command -->
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/skripts/discord-link.sk">
+            <summary>
+                Discord Command
+                <span class="icon">➤</span>
+            </summary>
+
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
+            <button class="copy-btn" onclick="copyContent(event)">Copy</button>
+
+            <pre class="code-snippet"><code>Loading...</code></pre>
+        </details>
+
+        <!-- Trash Command -->
+        <details class="hvr-float hvr-outline hvr-grow" data-script="codeshare/skripts/trash-command.sk">
+            <summary>
+                Trash Command
+                <span class="icon">➤</span>
+            </summary>
+
+            <button class="download-btn" onclick="downloadContent(event)">Download</button>
+            <button class="copy-btn" onclick="copyContent(event)">Copy</button>
+
+            <pre class="code-snippet"><code>Loading...</code></pre>
+        </details>
+
 
 
 </body>

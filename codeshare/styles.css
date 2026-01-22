@@ -1,9 +1,13 @@
 body {
-	margin: 0px;
 	background-color: rgb(66, 69, 73);
+	margin: 0px;
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 15px;
 	overflow-x: hidden;
 
 	font-family: 'Trebuchet MS';
@@ -21,6 +25,7 @@ body {
 	height: 35px;
 	color: white;
 	line-height: 1;
+	margin-top: 20px;
 
 }
 
@@ -51,24 +56,6 @@ body {
 	transition: background-color 150ms ease-in-out 0s;
 }
 
-.page {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 10px;
-}
-
-.sum {
-	width: 200px;
-}
-
-.result {
-	margin-top: 30px;
-	font-size: 35px;
-	visibility: hidden;
-}
-
 .code-snippet {
 	border-radius: 15px;
 	background-color: rgb(29, 31, 35);
@@ -82,16 +69,34 @@ body {
 	overflow-x: hidden
 }
 
+.section-title{
+	width:500px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	row-gap: 20px;
+}
+
 /* handling the button */
 details {
-	user-select: none;
-	width: 500px;
+	user-select: auto;
+	width: 30%;
+	min-height: 40px;
+	flex: 0 0 50%;
 	border-radius: 15px;
 	background-color: rgb(40, 43, 48);
 	box-shadow: 0 0 10px rgb(60, 60, 60);
 	padding: 20px;
 	font-size: 18px;
 	overflow: hidden;
+}
+
+.subtitle{
+	margin-bottom: 0px;
+}
+
+.subdetails{
+	margin-top: 0px;
 }
 
 summary {

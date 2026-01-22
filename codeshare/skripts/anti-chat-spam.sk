@@ -1,0 +1,20 @@
+options:
+    cooldown: 2 seconds
+
+on chat:
+    if player is op:
+        stop
+    
+    if {chat.cooldown::%player%} is set:
+        set {_timeSince} to difference between {chat.cooldown::%player%} and now
+        
+        if {_timeSince} is less than {@cooldown}:
+            cancel event
+            set {_remaining} to {@cooldown} - {_timeSince}
+            send "&cPlease wait &e%{_remaining}% &cbefore sending another message!" to player
+            stop
+    
+    set {chat.cooldown::%player%} to now
+
+on quit:
+    delete {chat.cooldown::%player%}

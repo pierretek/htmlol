@@ -1,0 +1,119 @@
+body {
+	margin: 0px;
+	background-color: rgb(66, 69, 73);
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow-x: hidden;
+
+	font-family: 'Trebuchet MS';
+	color: rgb(200, 200, 200);
+}
+
+.download-btn {
+	border: none;
+	outline: none;
+	border-radius: 15px;
+	background-color: rgb(27, 114, 9);
+	padding: 10px;
+	font-size: 15px;
+	width: 120px;
+	height: 35px;
+	color: white;
+	line-height: 1;
+
+}
+
+.download-btn:hover {
+	/* box-shadow: rgb(3, 244, 111) inset 0px 0px 0px 2px; */
+	outline: 2px solid rgb(3, 244, 111);
+	background-color: rgb(35, 151, 11);
+	transition: box-background-color 150ms ease-in-out 0s;
+}
+
+.copy-btn {
+	border: none;
+	outline: none;
+	border-radius: 15px;
+	background-color: rgb(9, 82, 114);
+	padding: 10px;
+	font-size: 15px;
+	width: 120px;
+	height: 35px;
+	color: white;
+	line-height: 1;
+}
+
+.copy-btn:hover {
+	/* box-shadow: rgb(3, 232, 244) inset 0px 0px 0px 2px; */
+	outline: 2px solid rgb(3, 232, 244);
+	background-color: rgb(12, 137, 168);
+	transition: background-color 150ms ease-in-out 0s;
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+
+.sum {
+	width: 200px;
+}
+
+.result {
+	margin-top: 30px;
+	font-size: 35px;
+	visibility: hidden;
+}
+
+.code-snippet {
+	border-radius: 15px;
+	background-color: rgb(29, 31, 35);
+	padding: 15px;
+	font-size: 12px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	word-break: break-word;
+	text-indent: 0;
+	user-select: text;
+	overflow-x: hidden
+}
+
+/* handling the button */
+details {
+	user-select: none;
+	width: 500px;
+	border-radius: 15px;
+	background-color: rgb(40, 43, 48);
+	box-shadow: 0 0 10px rgb(60, 60, 60);
+	padding: 20px;
+	font-size: 18px;
+	overflow: hidden;
+}
+
+summary {
+	align-items: center;
+}
+
+details>summary span.icon {
+	transition: all 0.3s;
+	margin-left: auto;
+	font-size: 25px;
+
+}
+
+details[open] summary span.icon {
+	transform: rotate(90deg);
+}
+
+summary {
+	display: flex;
+	cursor: pointer;
+}
+
+summary::-webkit-details-marker {
+	display: none;
+}
